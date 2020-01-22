@@ -156,14 +156,14 @@ public:
 
             if (!err.empty())
             {
-                cerr << "Error connecting to Monero-Classic deamon due to "
+                cerr << "Error connecting to Monero-Rub deamon due to "
                      << err << endl;
                 return false;
             }
         }
         else
         {
-            cerr << "Error connecting to Monero-Classic deamon at "
+            cerr << "Error connecting to Monero-Rub deamon at "
                  << deamon_url << endl;
             return false;
         }

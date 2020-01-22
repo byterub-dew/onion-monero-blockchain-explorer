@@ -9,10 +9,10 @@
 #define BLOCKCHAIN_DB DB_LMDB
 
 
-#define UNSIGNED_TX_PREFIX "Monero-Classic unsigned tx set\003"
-#define SIGNED_TX_PREFIX "Monero-Classic signed tx set\003"
-#define KEY_IMAGE_EXPORT_FILE_MAGIC "Monero-Classic key image export\002"
-#define OUTPUT_EXPORT_FILE_MAGIC "Monero-Classic output export\003"
+#define UNSIGNED_TX_PREFIX "Monero-Rub unsigned tx set\003"
+#define SIGNED_TX_PREFIX "Monero-Rub signed tx set\003"
+#define KEY_IMAGE_EXPORT_FILE_MAGIC "Monero-Rub key image export\002"
+#define OUTPUT_EXPORT_FILE_MAGIC "Monero-Rub output export\003"
 
 #define FEE_ESTIMATE_GRACE_BLOCKS 10 // estimate fee valid for that many blocks
 

@@ -133,7 +133,7 @@ make
 
 To run it:
 ```
-./xmcblocks
+./rubblocks
 ```
 
 By default it will look for blockchain in its default location i.e., `~/.bitmonero/lmdb`.
@@ -142,13 +142,13 @@ You can use `-b` option if its in different location.
 For example:
 
 ```bash
-./xmcblocks -b /home/mwo/non-defult-monero-location/lmdb/
+./rubblocks -b /home/mwo/non-defult-monero-location/lmdb/
 ```
 
 Example output:
 
 ```bash
-[mwo@arch onion-monero-blockchain-explorer]$ ./xmcblocks
+[mwo@arch onion-monero-blockchain-explorer]$ ./rubblocks
 2016-May-28 10:04:49.160280 Blockchain initialized. last block: 1056761, d0.h0.m12.s47 time ago, current difficulty: 1517857750
 (2016-05-28 02:04:49) [INFO    ] Crow/0.1 server is running, local port 8081
 ```
@@ -158,7 +158,7 @@ Go to your browser: http://127.0.0.1:8081
 ## The explorer's command line options
 
 ```
-xmcblocks, Onion Monero Blockchain Explorer:
+rubblocks, Onion Monero Blockchain Explorer:
   -h [ --help ] [=arg(=1)] (=0)         produce help message
   -t [ --testnet ] [=arg(=1)] (=0)      use testnet blockchain
   -s [ --stagenet ] [=arg(=1)] (=0)     use stagenet blockchain
@@ -214,10 +214,10 @@ Example usage, defined as bash aliases.
 
 ```bash
 # for mainnet explorer
-alias xmcblocksmainnet='~/onion-monero-blockchain-explorer/build/xmcblocks    --port 8081 --testnet-url "http://139.162.32.245:8082" --enable-pusher --enable-emission-monitor'
+alias rubblocksmainnet='~/onion-monero-blockchain-explorer/build/rubblocks    --port 8081 --testnet-url "http://139.162.32.245:8082" --enable-pusher --enable-emission-monitor'
 
 # for testnet explorer
-alias xmcblockstestnet='~/onion-monero-blockchain-explorer/build/xmcblocks -t --port 8082 --mainnet-url "http://139.162.32.245:8081" --enable-pusher --enable-emission-monitor'
+alias rubblockstestnet='~/onion-monero-blockchain-explorer/build/rubblocks -t --port 8082 --mainnet-url "http://139.162.32.245:8081" --enable-pusher --enable-emission-monitor'
 ```
 
 These are aliases similar to those used for http://139.162.32.245:8081/ and http://139.162.32.245:8082/, respectively.
@@ -229,7 +229,7 @@ disabled. To enable it use `--enable-emission-monitor` flag, e.g.,
 
 
 ```bash
-xmcblocks --enable-emission-monitor
+rubblocks --enable-emission-monitor
 ```
 
 This flag will enable emission monitoring thread. When started, the thread
@@ -267,7 +267,7 @@ By default, decoding and proving tx's outputs are done on the server side. To do
 (private view and tx keys are not send to the server) JavaScript-based decoding can be enabled:
 
 ```
-xmcblocks --enable-js
+rubblocks --enable-js
 ```
 
 ## Enable SSL (https)
@@ -283,10 +283,10 @@ openssl req -new -key server.key -out server.csr
 openssl x509 -req -days 3650 -in server.csr -signkey server.key -out server.crt
 ```
 
-Having the `crt` and `key` files, run `xmcblocks` in the following way:
+Having the `crt` and `key` files, run `rubblocks` in the following way:
 
 ```bash
-./xmcblocks --ssl-crt-file=/tmp/server.crt --ssl-key-file=/tmp/server.key
+./rubblocks --ssl-crt-file=/tmp/server.crt --ssl-key-file=/tmp/server.key
 ```
 
 Note: Because we generated our own certificate, modern browsers will complain
@@ -299,7 +299,7 @@ The explorer has JSON api. For the API, it uses conventions defined by [JSend](h
 By default the api is disabled. To enable it, use `--enable-json-api` flag, e.g.,
 
 ```
-./xmcblocks --enable-json-api
+./rubblocks --enable-json-api
 ```
 
 #### api/transaction/<tx_hash>
@@ -354,8 +354,8 @@ Partial results shown:
     "tx_hash": "6093260dbe79fd6277694d14789dc8718f1bd54457df8bab338c2efa3bb0f03d",
     "tx_size": 13323,
     "tx_version": 2,
-    "xmc_inputs": 0,
-    "xmc_outputs": 0
+    "rub_inputs": 0,
+    "rub_outputs": 0
   },
   "status": "success"
 }
@@ -453,8 +453,8 @@ Partial results shown:
         "tx_hash": "3ff71b65bec34c9261e01a856e6a03594cf0472acf6b77db3f17ebd18eaa30bf",
         "tx_size": 95,
         "tx_version": 2,
-        "xmc_inputs": 0,
-        "xmc_outputs": 8025365394426
+        "rub_inputs": 0,
+        "rub_outputs": 8025365394426
       }
     ]
   },
@@ -492,8 +492,8 @@ Partial results shown:
         "tx_hash": "9f3374f8ac67febaab153eab297937a3d0d2c706601e496bf5028146da0c9aef",
         "tx_size": 13291,
         "tx_version": 2,
-        "xmc_inputs": 0,
-        "xmc_outputs": 0
+        "rub_inputs": 0,
+        "rub_outputs": 0
       }
     ],
     "txs_no": 7
@@ -545,8 +545,8 @@ Partial results shown:
         "tx_hash": "479ba432f5c88736b438dd4446a11a13046a752d469f7828151f5c5b86be4e9a",
         "tx_size": 95,
         "tx_version": 2,
-        "xmc_inputs": 0,
-        "xmc_outputs": 7992697599717
+        "rub_inputs": 0,
+        "rub_outputs": 7992697599717
       }
     ]
   },
@@ -597,7 +597,7 @@ curl  -w "\n" -X GET "http://127.0.0.1:8081/api/outputs?txhash=17049bc5f2d9fbca1
 
 Proving transfer:
 
-We use recipient's address (i.e. not our address from which we sent xmc to recipient).
+We use recipient's address (i.e. not our address from which we sent rub to recipient).
 For the viewkey, we use `tx_private_key` (although the GET variable is still called `viewkey`) that we obtained by sending this txs.
 
 ```bash
